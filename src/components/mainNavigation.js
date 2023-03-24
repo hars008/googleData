@@ -6,7 +6,7 @@ function MainNavigation(){
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark">
           <a className="navbar-brand" href="#" style={{ marginLeft: "40px" }}>
-            MoviesThug..
+            TITLE..
           </a>
           <button
             className="navbar-toggler"
@@ -30,17 +30,12 @@ function MainNavigation(){
               >
                 <NavLink to="/home/">Home</NavLink>
               </li>
-              <li
-                className="nav-item active "
-                style={{ margin: "0 10px 10px 40px" }}
-              >
-                <NavLink to="/movies">Movies</NavLink>
-              </li>
+
               <li
                 className="nav-item active"
                 style={{ margin: "0 10px 10px 40px" }}
               >
-                <NavLink to="/recommendations">Recommendations</NavLink>
+                <NavLink to="/details">Details</NavLink>
               </li>
               <li
                 className="nav-item active"
@@ -48,25 +43,15 @@ function MainNavigation(){
               >
                 <NavLink to="/about">About</NavLink>
               </li>
-
-              <li
-                className="nav-item active"
-                style={{ margin: "0 10px 10px 40px" }}
-              >
-                <NavLink to="/loginPage">Login</NavLink>
-              </li>
             </ul>
-            <form className="form-inline my-2">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn  my-2 my-sm-0 myBtn" type="submit">
-                Search
-              </button>
-            </form>
+            <div className="btnDiv">
+              <NavLink to="/loginPage" className="btn  my-2 my-sm-0 myBtn">
+                Login
+              </NavLink>
+              <NavLink to="/signPage" className="btn  my-2 my-sm-0 myBtn">
+                Sign in
+              </NavLink>
+            </div>
           </div>
         </nav>
       </div>

@@ -48,24 +48,25 @@ nav a.active {
     transition: 0.15s ease-in-out;
 
 }
-
+.btnDiv{
+  margin-left: 40px;
+}
 .myBtn{
   background-color: #c40202;
   color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;
-  margin-right: 20px;
+  
   cursor: pointer;
   transition: 0.5s;
+
 }
 .myBtn:hover{
   background-color: #da0a0ab5;
   color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
   font-size: 18px;
   font-weight: bold;

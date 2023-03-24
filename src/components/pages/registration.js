@@ -1,40 +1,37 @@
 import React, { useState } from "react";
 import "./registration.css";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import {LoginContextProvider} from "../pages/context";
-
-
+import { LoginContextProvider } from "./context";
 
 function Registration() {
-
   // const [isLogin, setIsLogin] = useState(true);
   const loginctx = useContext(LoginContextProvider);
-  
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setotp] = useState();
-  const [id,setId]=useState();
+  const [id, setId] = useState();
   const navigate = useNavigate();
   const names = (event) => {
     setName(event.target.value);
-  }
+  };
   const emails = (event) => {
     setEmail(event.target.value);
-  }
+  };
   const passwords = (event) => {
     setPassword(event.target.value);
-  }
+  };
   const cpasswords = (event) => {
     setCpassword(event.target.value);
-  }
- const otps=(event)=>{
-  setotp(event.target.value);
- }
+  };
+  const otps = (event) => {
+    setotp(event.target.value);
+  };
 
   const Submit = (event) => {
     if (password !== cpassword) {
@@ -51,50 +48,47 @@ function Registration() {
       username: name,
       email: email,
       password: password,
-    }
+    };
     fetch("http://localhost:80/api/auth/register", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     }).then((result) => {
       result.json().then((resp) => {
         if (resp) {
           setId(resp._id);
           setShowOtp(true);
-        }
-        else {
+        } else {
           alert("Something went wrong");
           navigate("/");
         }
-      })
-    })
-  }
-
+      });
+    });
+  };
 
   const handleOTPSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      toOtp:otp,
-    }
-    fetch("http://localhost:80/api/auth/verify/"+id, {
+      toOtp: otp,
+    };
+    fetch("http://localhost:80/api/auth/verify/" + id, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     }).then((result) => {
       result.json().then((resp) => {
-        if (resp==="ok") {
+        if (resp === "ok") {
           console.log(resp);
-        }
-        else {
+        } else {
           alert("Something went wrong");
           navigate("/");
         }
-      })
-    })
+      });
+    });
   };
   return (
     <div className="registration-container">
@@ -149,12 +143,13 @@ function Registration() {
       )}
       <p>
         Already have an account?
-        <Link to="#" onClick={
-          () => {
+        <Link
+          to="#"
+          onClick={() => {
             loginctx.setLogin();
             // navigate("/login");
-          }
-        }>
+          }}
+        >
           Login
         </Link>
       </p>

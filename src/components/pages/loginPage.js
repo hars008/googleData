@@ -1,13 +1,13 @@
 import Login from "./login";
-import Registration from "./registrationpage";
+import Registration from "./registration";
 import { useContext } from "react";
-import {LoginContextProvider} from "./context";
+import { LoginContextProvider } from "./context";
 function Main() {
   const loginctx = useContext(LoginContextProvider);
 
   return (
-    <div>
-   <Login />
+    <div className="loginPage">
+      <Login />
 
       {/* <Registration /> */}
     </div>

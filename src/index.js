@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
-import { FavoritesContextProvider } from './store/favorites-context';
-import { WishlistContextProvider } from './store/wishlist-context';
+import {AuthContextProvider} from './context/AuthContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-<FavoritesContextProvider>
-    <WishlistContextProvider>
+root.render(<>
+<AuthContextProvider>
 <BrowserRouter>
 <App />
 </BrowserRouter>
-</WishlistContextProvider>
-</FavoritesContextProvider>);
+</AuthContextProvider>
+</>
+);

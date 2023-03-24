@@ -1,13 +1,18 @@
 import React from 'react'
-import CategoryDeck from '../items/CategoryDeck'
+import Banner from '../items/Banner'
+import TableStruc from '../items/TableStruc'
+import Footer from '../items/Footer'
 const Mainpage = () => {
   return (
-    <div>
-      <CategoryDeck language="Hindi"/>
-      <CategoryDeck language="english"/>
-      <CategoryDeck language="Hindi"/>
-    </div>
-  )
+    <>
+      <Banner />
+      <div>
+        <TableStruc />
+       
+      </div>
+      {/* <Footer /> */}
+    </>
+  );
 }
 
 export default Mainpage
