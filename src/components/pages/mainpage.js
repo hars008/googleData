@@ -7,7 +7,7 @@ const Mainpage = () => {
     <>
       <Banner />
       <div>
-        <TableStruc />
+        {/* <TableStruc /> */}
        
       </div>
       {/* <Footer /> */}

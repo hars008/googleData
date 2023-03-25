@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link , useNavigate} from "react-router-dom";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
@@ -9,51 +9,11 @@ import {
   MDBBtn,
   MDBInput,
 } from "mdb-react-ui-kit";
-
 import { useContext } from "react";
 import LoginContext from "../pages/context";
 
 import "./login.css";
-// function Login() {
-//   // const [isLogin, setIsLogin] = useState(true);
-//   const loginctx=useContext(LoginContext);
-//   const [password,setPassword]=useState("");
-//   const[email,setEmail]=useState("");
 
-//   const emails =(e)=>{
-//     setEmail(e.target.value);
-//   }
-//   const passwords = (e) => {
-//     setPassword(e.target.value);
-//   }
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const data = {
-//       email: email,
-//       password: password,
-//     }
-//     fetch("http://localhost:80/api/auth/login", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(data)
-//     }).then((result) => {
-//       result.json().then((resp) => {
-//         if (resp) {
-//           localStorage.setItem(resp._id,"userid");
-//           localStorage.setItem(resp.isAdmin, "userisAdmin");
-//           localStorage.setItem(resp.accessToken, "token");
-//           console.log("hogya");
-//         }
-//         else {
-//           alert("Something went wrong");
-//           console.log("gadbad hogayi");
-//         }
-//       })
-//     })
-//   }
   
 function Login() {
   const [userData, setUserData] = useState({
@@ -80,138 +40,77 @@ function Login() {
   const registerpage = () => {
     navigate("/register");
   };
+
+  setTimeout(() => {
+    const button = document.querySelector('.img__btn');
+
+    button.addEventListener('click', function () {
+      document.querySelector('.cont').classList.toggle('s--signup');
+
+    });
+  }, 0);
+ 
+
+
   return (
-    // <div className="login-container">
-    //   <h1>Login</h1>
-    //   <form onSubmit={handleSubmit} className="hi form-signin">
-    //     <input
-    //       type="email"
-    //       name="email"
-    //       placeholder="Email asli "
-    //       value={email}
-    //       onChange={emails}
-    //       required
-    //       className="form-control"
-    //     />
-    //     <input
-    //       type="password"
-    //       name="password"
-    //       placeholder="Password"
-    //       value={password}
-    //       onChange={passwords}
-    //       required
-    //     />
+    
+    // <br>
+    //   <br>
+        <div class="cont">
+          <div class="form sign-in">
+            <h2>Welcome</h2>
+            <label>
+              <span>Email</span>
+              <input type="email" />
+            </label>
+            <label>
+              <span>Password</span>
+              <input type="password" />
+            </label>
+            <p class="forgot-pass">Forgot password?</p>
+            <button type="button" class="submit">Sign In</button>
 
-    //     <button type="submit"> Login</button>
-    //   </form>
-    //   <p>
-    //     Don't have an account?
-    //     <Link to="/Register" onClick={
-    //       ()=>{
-    //         loginctx.setLogin();
-
-    //       }}>
-    //       Register
-    //     </Link>
-    //   </p>
-    // </div>
-
-    <MDBContainer fluid className="p-3 my-5 h-custom">
-      <MDBRow>
-        <MDBCol col="8" md="5">
-          <img
-            src={require("./loginimg.png")}
-            className="img-fluid"
-            alt="Sample"
-          />
-        </MDBCol>
-
-        <MDBCol col="4" md="6">
-          <div className="d-flex flex-row align-items-center justify-content-center">
-            <p className="lead fw-normal mb-0 me-3">Sign in with</p>
-
-            <MDBBtn
-              floating
-              size="md"
-              className="me-2"
-              style={{ backgroundColor: "#3B5998" }}
-            >
-              F
-            </MDBBtn>
-
-            <MDBBtn
-              floating
-              size="md"
-              className="me-2"
-              style={{ backgroundColor: "#dd4b39" }}
-            >
-              {/* <MDBIcon fab icon='twitter' /> */}G{" "}
-            </MDBBtn>
-            <MDBBtn
-              floating
-              size="md"
-              className="me-2"
-              style={{ backgroundColor: "#0082ca" }}
-            >
-              Li{" "}
-            </MDBBtn>
           </div>
+          <div class="sub-cont">
+            <div class="img">
+              <div class="img__text m--up">
 
-          <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
+                <h3>Don't have an account? Please Sign up!</h3>
+                </div>
+                  <div class="img__text m--in">
 
-          <MDBInput
-            wrapperClass="mb-4"
-            label="User Name"
-            id="username"
-            onChange={handlechange}
-            type="text"
-            size="lg"
-          />
-          <MDBInput
-            wrapperClass="mb-4"
-            label="Password"
-            id="password"
-            onChange={handlechange}
-            type="password"
-            size="lg"
-          />
+                    <h3>If you already has an account, just sign in.</h3>
+                    </div>
+                      <div class="img__btn">
+                        <span class="m--up">Sign Up</span>
+                        <span class="m--in">Sign In</span>
+                      </div>
+                  </div>
+                  <div class="form sign-up">
+                    <h2>Create your Account</h2>
+                    <label>
+                      <span>Name</span>
+                      <input type="text" />
+                    </label>
+                    <label>
+                      <span>Email</span>
+                      <input type="email" />
+                    </label>
+                    <label>
+                      <span>Password</span>
+                      <input type="password" />
+                    </label>
+                    <button type="button" class="submit">Sign Up</button>
 
-          {/* <div className="d-flex justify-content-between mb-4" style={{ color: 'rgb(160, 63, 234)' }} >
-                        <MDBCheckbox className='danger' name='flexCheck' value=''  id='flexCheckDefault' label='Remember me' />
-                        <a href="!#" style={{ color: 'rgb(160, 63, 234)' }} >Forgot password?</a>
-                    </div> */}
-
-          <div className="text-center text-md-start mt-4 pt-2">
-            <MDBBtn
-              className="mb-0 px-5"
-              disabled={loading}
-              onClick={handlelogin}
-              style={{ backgroundColor: "rgb(160, 63, 234)" }}
-              size="lg"
-            >
-              Login
-            </MDBBtn>
-            {error && <span>{error.message}</span>}
-            <p className="small fw-bold mt-2 pt-1 mb-2">
-              Don't have an account?{" "}
-              <a
-                href="#!"
-                className="link-dark"
-                onClick={
-                  registerpage
-                  
-                }
-              >
-                Register
-              </a>
-            </p>
-          </div>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+                  </div>
+              </div>
+            </div>
+          
   );
 }
 
+// useEffect(() => {
+//   //Runs only on the first render
+ 
+// }, []);
 export default Login;

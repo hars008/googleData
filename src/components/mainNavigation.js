@@ -48,9 +48,9 @@ function MainNavigation(){
               <NavLink to="/loginPage" className="btn  my-2 my-sm-0 myBtn">
                 Login
               </NavLink>
-              <NavLink to="/signPage" className="btn  my-2 my-sm-0 myBtn">
+              {/* <NavLink to="/signPage" className="btn  my-2 my-sm-0 myBtn">
                 Sign in
-              </NavLink>
+              </NavLink> */}
             </div>
           </div>
         </nav>
